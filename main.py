@@ -13,6 +13,7 @@ forms = browser.get_current_form().print_summary()
 
 # search for term
 search_term = str(input("Enter a term to download its images:\n"))
+extension = str('.') + str(input('enter the extension for the type of file'))
 browser["q"] = search_term
 
 browser.launch_browser()
@@ -43,11 +44,9 @@ if path.endswith('cats'):
 else:
 	os.mkdir(path)
 
-print('\n\n')
-
 # Download images
 counter = 0
 for img in img_src:
-	save_as = os.path.join(path, (search_term + str(counter) + ".png"))
+	save_as = os.path.join(path, (search_term + str(counter) + extension))
 	wget.download(img, save_as)
 	counter += 1
